@@ -4,5 +4,6 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <errno.h>
 
 char ** parse_args(char * line);
