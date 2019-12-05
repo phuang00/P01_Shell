@@ -6,4 +6,5 @@
 #include <string.h>
 #include <errno.h>
 
-char ** parse_args(char * line);
+char ** parse_args(char * line, char * delimiter);
+void run_arg(char ** tokens);
