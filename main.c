@@ -13,6 +13,12 @@ int main() {
       }
       printf("%s\n", getcwd(tokens[1], 100));
     }
+    else if (strcmp(cmd, "exit") != 0){
+      int id = fork();
+      if (!id){
+        execvp(tokens[0], tokens);
+      }
+    }
   }
   return 0;
 }
