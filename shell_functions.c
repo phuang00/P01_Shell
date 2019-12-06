@@ -12,7 +12,7 @@ char ** parse_args(char * line, char * delimiter){
   return tokens;
 }
 
-void run_arg(char ** tokens){
+void run_cmd(char ** tokens){
   if (strcmp(tokens[0], "cd") == 0){
     chdir(tokens[1]);
     if (errno != 0){
@@ -23,6 +23,10 @@ void run_arg(char ** tokens){
   else {
     if (fork() == 0){
       execvp(tokens[0], tokens);
+      if (errno != 0){
+        printf("%s: command not found\n", tokens[0]);
+        kill(getpid(), SIGTERM);
+      }
     }
     else{
       wait(NULL);

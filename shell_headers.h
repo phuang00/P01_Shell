@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
 char ** parse_args(char * line, char * delimiter);
-void run_arg(char ** tokens);
+void run_cmd(char ** tokens);
