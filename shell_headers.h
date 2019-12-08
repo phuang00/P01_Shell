@@ -6,6 +6,8 @@
 #include <string.h>
 #include <errno.h>
 #include <signal.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 
 char ** parse_args(char * line, char * delimiter);
 void run_cmd(char ** tokens);
