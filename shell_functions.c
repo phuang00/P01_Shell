@@ -35,10 +35,15 @@ void run_cmd(char ** tokens){
           tokens[i + 1] = NULL;
           in = 1;
         }
-        if (strcmp(tokens[i], ">") == 0){
+        else if (strcmp(tokens[i], ">") == 0){
           tokens[i] = NULL;
           strcpy(output, tokens[i + 1]);
           out = 1;
+        }
+        else if (strcmp(tokens[i], ">>") == 0){
+          tokens[i] = NULL;
+          strcpy(output, tokens[i + 1]);
+          out = 2;
         }
       }
       if (in){
@@ -51,7 +56,13 @@ void run_cmd(char ** tokens){
         close(fd);
       }
       if (out){
-        int fd = open(output, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+        int fd;
+        if (out == 2){
+          fd = open(output, O_CREAT | O_WRONLY, 0644);
+        }
+        else{
+          fd = open(output, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+        }
         if (fd < 0){
           printf("%s: %s\n", output, strerror(errno));
         }
