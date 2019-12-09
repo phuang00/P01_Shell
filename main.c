@@ -11,8 +11,10 @@ int main() {
     while (cmds[i] != NULL && strcmp(cmds[i], "exit") != 0){
       char ** tokens = parse_args(cmds[i], " ");
       run_cmd(tokens);
+      free(tokens);
       i++;
     }
+    free(cmds);
   }
   return 0;
 }
