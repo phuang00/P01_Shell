@@ -31,8 +31,7 @@ void run_cmd(char ** tokens){
       for (i = 0; tokens[i] != 0; i++){
         if (strcmp(tokens[i], "<") == 0){
           strcpy(input, tokens[i + 1]);
-          tokens[i] = tokens[i + 1];
-          tokens[i + 1] = NULL;
+          tokens[i] = NULL;
           in = 1;
         }
         else if (strcmp(tokens[i], ">") == 0){
@@ -71,7 +70,7 @@ void run_cmd(char ** tokens){
         close(fd);
       }
       execvp(tokens[0], tokens);
-      if (errno == ENOENT){
+      if (errno != 0){
         printf("%s: command not found\n", tokens[0]);
         kill(getpid(), SIGTERM);
       }
