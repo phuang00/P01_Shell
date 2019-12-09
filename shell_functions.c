@@ -20,8 +20,12 @@ void run_cmd(char ** tokens){
     }
     printf("%s\n", getcwd(tokens[1], 100));
   }
-  else {
-    if (fork() == 0){
+  else if (strcmp(tokens[0], "")){
+    int id = fork();
+    if (errno != 0){
+      printf("Errno: %d %s\n", errno, strerror(errno));
+    }
+    if (id == 0){
       int i;
       int in = 0;
       int out = 0;
