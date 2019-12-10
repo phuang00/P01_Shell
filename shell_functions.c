@@ -1,7 +1,8 @@
 #include "shell_headers.h"
 
 char ** parse_args(char * line, char * delimiter){
-  char * curr = line;
+  //char * curr = line;
+  char * curr = strip(line, ' ');
   char ** tokens = malloc(6 * sizeof(curr));
   int i = 0;
   while (curr != NULL){
@@ -9,6 +10,7 @@ char ** parse_args(char * line, char * delimiter){
     i++;
   }
   tokens[i] = NULL;
+  free(curr);
   return tokens;
 }
 
@@ -41,8 +43,11 @@ char * strip(char * line, char delimiter){
       }
     }
   }
-  char * ret = output;
-  printf("%s\n", ret);
+  if (output[i - 1] == ' '){
+    output[i - 1] = 0;
+  }
+  char * ret = malloc(100 * sizeof(char));
+  strcpy(ret, output);
   return ret;
 }
 
