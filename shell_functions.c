@@ -109,7 +109,7 @@ void run_cmd(char ** tokens){
     if (errno != 0){
       printf("Errno: %d %s\n", errno, strerror(errno));
     }
-    printf("%s\n", getcwd(tokens[1], 100));
+    //printf("%s\n", getcwd(tokens[1], 100));
   }
   else if (strcmp(tokens[0], "")){
     if (fork() == 0){
