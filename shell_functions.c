@@ -43,7 +43,7 @@ char * strip(char * line, char delimiter){
       }
     }
   }
-  if (output[i - 1] == ' '){
+  if (i > 0 && output[i - 1] == ' '){
     output[i - 1] = 0;
   }
   char * ret = malloc(100 * sizeof(char));
@@ -59,7 +59,10 @@ void redirection(char ** tokens){
   char output[100];
   int backup = 0;
   for (i = 0; tokens[i] != 0; i++){
-    if (strcmp(tokens[i], "<") == 0){
+    if (strcmp(tokens[i], "|") == 0){
+      //code for piping
+    }
+    else if (strcmp(tokens[i], "<") == 0){
       strcpy(input, tokens[i + 1]);
       tokens[i] = NULL;
       in = 1;
