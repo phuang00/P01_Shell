@@ -58,10 +58,7 @@ void redirection(char ** tokens){
   char output[100];
   int backup = 0;
   for (i = 0; tokens[i] != 0; i++){
-    if (strcmp(tokens[i], "|") == 0){
-      //code for piping
-    }
-    else if (strcmp(tokens[i], "<") == 0){
+    if (strcmp(tokens[i], "<") == 0){
       strcpy(input, tokens[i + 1]);
       tokens[i] = NULL;
       in = 1;
@@ -101,6 +98,10 @@ void redirection(char ** tokens){
     dup2(fd, STDOUT_FILENO);
     close(fd);
   }
+}
+
+void pipe(char ** tokens){
+
 }
 
 void run_cmd(char ** tokens){
