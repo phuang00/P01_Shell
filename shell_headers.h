@@ -10,4 +10,5 @@
 #include <sys/stat.h>
 
 char ** parse_args(char * line, char * delimiter);
+void redirection(char ** tokens);
 void run_cmd(char ** tokens);
