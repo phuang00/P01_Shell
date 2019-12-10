@@ -106,9 +106,13 @@ void pipe(char ** tokens){
 
 void run_cmd(char ** tokens){
   if (strcmp(tokens[0], "cd") == 0){
+    if (tokens[1] == NULL || strcmp(tokens[1], "~") == 0){
+      tokens[1] = getenv("HOME");
+    }
     chdir(tokens[1]);
     if (errno != 0){
       printf("Errno: %d %s\n", errno, strerror(errno));
+      errno = 0;
     }
     //printf("%s\n", getcwd(tokens[1], 100));
   }
