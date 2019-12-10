@@ -12,6 +12,40 @@ char ** parse_args(char * line, char * delimiter){
   return tokens;
 }
 
+char * strip(char * line, char delimiter){
+  char input[100];
+  char output[100];
+  strcpy(input, line);
+  int n = strlen(line);
+  int i = 0, j = 0; //i keeps track of output, j keeps track of input
+  int isSpace = 0; //boolean for whether or not character is space
+  while (j < n && input[j] == delimiter){ //gets rid of preceding whitespace
+    j++;
+  }
+  while (j < n){ //loops through rest of string for extra spaces
+    if (input[j] != delimiter){
+      isSpace = 0; //space not found
+      output[i] = input[j];
+      i++;
+      j++;
+    }
+    else{
+      if (isSpace){ //space already found
+        j++;
+      }
+      else {
+        isSpace = 1; //space found
+        output[i] = input[j];
+        i++;
+        j++;
+      }
+    }
+  }
+  char * ret = output;
+  printf("%s\n", ret);
+  return ret;
+}
+
 void run_cmd(char ** tokens){
   if (strcmp(tokens[0], "cd") == 0){
     chdir(tokens[1]);
