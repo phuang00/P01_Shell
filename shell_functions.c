@@ -43,9 +43,8 @@ char * strip(char * line, char delimiter){
       }
     }
   }
-  if (i > 0 && output[i - 1] == ' '){
-    output[i - 1] = 0;
-  }
+  if (i > 0 && output[i - 1] == ' ') output[i - 1] = 0;
+  output[i] = 0;
   char * ret = malloc(100 * sizeof(char));
   strcpy(ret, output);
   return ret;

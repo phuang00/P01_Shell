@@ -3,7 +3,6 @@
 int main() {
   char line[100];
   while (strcmp(line, "exit") != 0){
-    printf("$ ");
     fgets(line, 100, stdin);
     line[strlen(line) - 1] = 0;
     char ** cmds = parse_args(line, ";");
