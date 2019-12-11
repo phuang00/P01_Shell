@@ -8,9 +8,15 @@ int main() {
     char ** cmds = parse_args(line, ";");
     int i = 0;
     while (cmds[i] != NULL && strcmp(cmds[i], "exit") != 0){
-      char ** tokens = parse_args(cmds[i], " ");
-      run_cmd(tokens);
-      free(tokens);
+      char ** cmd = parse_args(cmds[i], "|");
+      if (cmd[1]){
+        piping(cmd);
+      }
+      else{
+        char ** tokens = parse_args(cmds[i], " ");
+        run_cmd(tokens);
+        free(tokens);
+      }
       i++;
     }
     free(cmds);

@@ -101,6 +101,14 @@ void redirection(char ** tokens){
 }
 
 void piping(char ** tokens){
+  FILE *input = popen(tokens[0], "r");
+  FILE *output = popen(tokens[1], "w");
+  char buffer[100];
+  while (fgets(buffer, 100, input)){
+    fputs(buffer, output);
+  }
+  pclose(input);
+  pclose(output);
   //popen(cmd1, r);
   //popen(cmd2, w);
 }
