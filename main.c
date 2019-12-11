@@ -17,7 +17,9 @@ int main() {
         run_cmd(tokens);
         free(tokens);
       }
+      free(cmds[i]);
       i++;
+      free(cmd);
     }
     free(cmds);
   }

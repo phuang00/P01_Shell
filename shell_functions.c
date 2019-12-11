@@ -102,7 +102,13 @@ void redirection(char ** tokens){
 
 void piping(char ** tokens){
   FILE *input = popen(tokens[0], "r");
+  if (!input){
+    printf("%s\n", strerror(errno));
+  }
   FILE *output = popen(tokens[1], "w");
+  if (!output){
+    printf("%s\n", strerror(errno));
+  }
   char buffer[100];
   while (fgets(buffer, 100, input)){
     fputs(buffer, output);
