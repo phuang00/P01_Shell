@@ -100,8 +100,9 @@ void redirection(char ** tokens){
   }
 }
 
-void pipe(char ** tokens){
-
+void piping(char ** tokens){
+  //popen(cmd1, r);
+  //popen(cmd2, w);
 }
 
 void run_cmd(char ** tokens){
