@@ -1,16 +1,13 @@
 #include "shell_headers.h"
 
 char ** parse_args(char * line, char * delimiter){
-  //char * curr = line;
-  char * stripped = strip(line, ' ');
-  char * curr = stripped;
+  char * curr = line;
   char ** tokens = malloc(6 * sizeof(curr));
   int i = 0;
   while (curr != NULL){
     tokens[i] = strsep(&curr, delimiter);
     i++;
   }
-  free(stripped);
   tokens[i] = NULL;
   return tokens;
 }
