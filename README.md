@@ -17,8 +17,10 @@ Limitations:
 * does not support multiple pipes in one command
 
 ## Function Headers
-* char ** parse_args(char * line, char * delimiter);
-* char * strip(char * line, char delimiter);
-* void redirection(char ** tokens);
-* void piping(char ** tokens);
-* void run_cmd(char ** tokens);
+```
+char ** parse_args(char * line, char * delimiter);
+char * strip(char * line, char delimiter);
+void redirection(char ** tokens);
+void piping(char ** tokens);
+void run_cmd(char ** tokens);
+```
