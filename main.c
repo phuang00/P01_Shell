@@ -10,16 +10,18 @@ int main() {
     int i = 0;
     int j;
     while (cmds[i] != NULL && strcmp(cmds[i], "exit") != 0){
-      char ** cmd = parse_args(stripped, "|");
+      char * temp_cmd = strip(cmds[i], ' ');
+      char ** cmd = parse_args(temp_cmd, "|");
       if (cmd[1]){
         piping(cmd);
       }
       else{
-        char ** tokens = parse_args(stripped, " ");
+        char ** tokens = parse_args(temp_cmd, " ");
         run_cmd(tokens);
         free(tokens);
       }
       free(cmd);
+      free(temp_cmd);
       i++;
     }
     free(cmds);
