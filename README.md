@@ -8,7 +8,7 @@ By Jackie Lin and Peihua Huang (period 10)
   * multi-redirection supports cmd > file1 < file2, cmd < file1 > file2, cmd < file1 >> file2, cmd >> file1 < file2, and cmd < file1 < file2
   * order of redirection doesn't matter
 * implements simple piping of commands
-
+<br>
   
 **Limitations:**
 * multi-redirection does not support two ">" signs or two ">>" signs or a combination of the two
