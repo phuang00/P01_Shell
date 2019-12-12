@@ -84,7 +84,7 @@ void redirection(char ** tokens){
   if (out){
     int fd;
     if (out == 2){
-      fd = open(output, O_CREAT | O_WRONLY, 0644);
+      fd = open(output, O_CREAT | O_WRONLY | O_APPEND, 0644);
     }
     else{
       fd = open(output, O_CREAT | O_WRONLY | O_TRUNC, 0644);
