@@ -24,16 +24,19 @@ By Jackie Lin and Peihua Huang (period 10)
 * putting too many semicolons next to each other may cause a segmentation fault and exit the program
 
 ## Files and Function Headers
-***shell_functions.c***      
+***shell_functions.c***    
+  
+```
 Handles all parsing functions (including multiple commands on one line)  
-	/*======== char **parse_args() ==========  
-	Inputs:  char *line  
-        	 char *delimiter  
-	Returns: a command's tokens separated by delimiter  
+/*======== char **parse_args() ==========  
+Inputs:  char *line  
+         char *delimiter  
+Returns: a command's tokens separated by delimiter  
     
-  Every time the string delimiter appears in line, the token is added to an array called tokens  
-  Very last item of tokens is always set to NULL  
-	====================*/  
+ Every time the string delimiter appears in line, the token is added to an array called tokens  
+ Very last item of tokens is always set to NULL  
+====================*/ 
+```
   
 Strips a command of its delimiter  
   /*======== char *strip() ==========    
