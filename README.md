@@ -8,8 +8,10 @@ By Jackie Lin and Peihua Huang
 * implements simple redirection (supports "<", ">", ">>") and also supports multi-redirection
   * multi-redirection supports cmd > file1 < file2, cmd < file1 > file2, cmd < file1 >> file2, cmd >> file1 < file2, and cmd < file1 < file2
   * order of redirection doesn't matter
+  * there must be a space between the redirection signs and the command/files
+    * for example, ls >output will not work, but ls > output will
 * implements simple piping of commands
-  * pipe must following this format: cmd | cmd (and both commands must exist!)  
+  * pipe must following this format: cmd | cmd (and both commands must exist and be pipe-able and in the right order!)  
 
 ***Attempted:***
 * attempted to implement multiple pipes in one command
