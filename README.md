@@ -24,28 +24,28 @@ By Jackie Lin and Peihua Huang (period 10)
 * putting too many semicolons next to each other may cause a segmentation fault and exit the program
 
 ## Files and Function Headers
-***shell_functions.c***
-Handles all parsing functions (including multiple commands on one line)
-	/*======== char **parse_args() ==========
-	Inputs:  char *line
-        	 char *delimiter
-	Returns: a command's tokens separated by delimiter
-
-  Every time the string delimiter appears in line, the token is added to an array called tokens
-  Very last item of tokens is always set to NULL
-	====================*/
-
-Strips a command of its delimiter
-  /*======== char *strip() ==========
-  Inputs:  char *line
-      	   char delimiter
-  Returns: a command with its extra delimiter stripped off (usually whitespace)
-
-  First trims all the delimiters that appear in front a command
-  Then goes through rest of command and makes sure that at most only one delimiter between tokens
-  Finally, trims any delimiter at the end of a command
+***shell_functions.c***      
+Handles all parsing functions (including multiple commands on one line)  
+	/*======== char **parse_args() ==========  
+	Inputs:  char *line  
+        	 char *delimiter  
+	Returns: a command's tokens separated by delimiter  
+    
+  Every time the string delimiter appears in line, the token is added to an array called tokens  
+  Very last item of tokens is always set to NULL  
+	====================*/  
+  
+Strips a command of its delimiter  
+  /*======== char *strip() ==========    
+  Inputs:  char *line    
+      	   char delimiter    
+  Returns: a command with its extra delimiter stripped off (usually whitespace)    
+    
+  First trims all the delimiters that appear in front a command    
+  Then goes through rest of command and makes sure that at most only one delimiter between tokens    
+  Finally, trims any delimiter at the end of a command    
   ====================*/
-
+    
 Handles all commands that implement redirection (<, >, or >>)
   /*======== void redirection() ==========
   Inputs:  char **tokens
