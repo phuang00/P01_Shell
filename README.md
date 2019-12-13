@@ -67,8 +67,8 @@ Handles all commands that implement pipes (|)
 Inputs:  char ** tokens
 Returns: void, uses popen() to pipe the two tokens accordingly
 
-First checks if | appears in the command tokens
-If command implements pipes, popen() is used to read and write from a pipe
+Function is called by main when a pipe appears
+popen() is used to read and write from a pipe
 ====================*/
 ```
 ```
