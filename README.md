@@ -1,5 +1,5 @@
 # P01_Shell
-By Jackie Lin and Peihua Huang (period 10)
+By Jackie Lin and Peihua Huang
 
 ## Shell Features
 ***Features:***
@@ -16,7 +16,7 @@ By Jackie Lin and Peihua Huang (period 10)
 * tried replacing ~/ with home directory
   * however, trying to cd into the home directory with ~ works   
 
-**Bugs:**
+***Bugs:***
 * multi-redirection does not support two ">" signs or two ">>" signs or a combination of the two
   * for example, cmd > file1 >> file2 will not work as intended
 * if these requirements for piping are not met, a broken pipe error may be thrown and exit the program
