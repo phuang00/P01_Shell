@@ -3,7 +3,7 @@ By Jackie Lin and Peihua Huang
 
 ## Shell Features
 ***Features:***
-* run commands (accounts for extra whitespace) including cd and exitxw
+* run commands (accounts for extra whitespace) including cd and exit
 * supports multiple commands on one line (separated by a semicolon)
 * implements simple redirection (supports "<", ">", ">>") and also supports multi-redirection
   * multi-redirection supports cmd > file1 < file2, cmd < file1 > file2, cmd < file1 >> file2, cmd >> file1 < file2, and cmd < file1 < file2
@@ -25,17 +25,17 @@ By Jackie Lin and Peihua Huang
 
 ## Files and Function Headers
 ***shell_functions.c***    
-  
+
 ```
 Handles all parsing functions (including multiple commands on one line)  
 /*======== char **parse_args() ==========  
 Inputs:  char *line  
          char *delimiter  
 Returns: a command's tokens separated by delimiter  
-    
+
  Every time the string delimiter appears in line, the token is added to an array called tokens  
  Very last item of tokens is always set to NULL  
-====================*/ 
+====================*/
 ```
 ```
 Strips a command of its delimiter  
@@ -43,7 +43,7 @@ Strips a command of its delimiter
  Inputs:  char *line    
       	   char delimiter    
  Returns: a command with its extra delimiter stripped off (usually whitespace)    
-    
+
  First trims all the delimiters that appear in front a command    
  Then goes through rest of command and makes sure that at most only one delimiter between tokens    
  Finally, trims any delimiter at the end of a command    
@@ -82,5 +82,5 @@ Also has error handling functionality (errno)
 ```
 
 ***main.c***
-  
+
 Handles running the program and processing terminal input (with fgets and functions from shell_functions.c) as well as exiting the program, also frees any allocated memory

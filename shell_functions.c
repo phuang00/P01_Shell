@@ -1,5 +1,15 @@
 #include "shell_headers.h"
 
+
+//Handles all parsing functions (including multiple commands on one line)
+/*======== char **parse_args() ==========
+Inputs:  char *line
+         char *delimiter
+Returns: a command's tokens separated by delimiter
+
+ Every time the string delimiter appears in line, the token is added to an array called tokens
+ Very last item of tokens is always set to NULL
+====================*/
 char ** parse_args(char * line, char * delimiter){
   char * curr = line;
   char ** tokens = malloc(6 * sizeof(curr));
@@ -12,6 +22,17 @@ char ** parse_args(char * line, char * delimiter){
   return tokens;
 }
 
+
+//Strips a command of its delimiter
+/*======== char *strip() ==========
+ Inputs:  char *line
+      	   char delimiter
+ Returns: a command with its extra delimiter stripped off (usually whitespace)
+
+ First trims all the delimiters that appear in front a command
+ Then goes through rest of command and makes sure that at most only one delimiter between tokens
+ Finally, trims any delimiter at the end of a command
+ ====================*/
 char * strip(char * line, char delimiter){
   char input[100];
   char output[100];
@@ -48,6 +69,15 @@ char * strip(char * line, char delimiter){
   return ret;
 }
 
+
+//Handles all commands that implement redirection (<, >, or >>)
+/*======== void redirection() ==========
+Inputs:  char ** tokens
+Returns: void, modifies file table according to command
+
+First checks if signs >, < or >> appear in the command tokens
+If they do exist, stdout and stdin's spots in the file table are modified accordingly
+====================*/
 void redirection(char ** tokens){
   int i;
   int in = 0;
@@ -98,6 +128,15 @@ void redirection(char ** tokens){
   }
 }
 
+
+//Handles all commands that implement pipes (|)
+/*======== void piping() ==========
+Inputs:  char ** tokens
+Returns: void, uses popen() to pipe the two tokens accordingly
+
+First checks if | appears in the command tokens
+If command implements pipes, popen() is used to read and write from a pipe
+====================*/
 void piping(char ** tokens){
   FILE *input = popen(tokens[0], "r");
   if (!input){
@@ -117,6 +156,16 @@ void piping(char ** tokens){
   //popen(cmd2, w);
 }
 
+
+//Runs all commands, including chdir()
+/*======== void run_cmd() ==========
+Inputs:  char **tokens
+Returns: void, checks for redirection and cd before performing execvp on command tokens
+
+First checks if cd appears in command tokens and runs chdir() accordingly
+Then checks for redirection in the command
+Also has error handling functionality (errno)
+====================*/
 void run_cmd(char ** tokens){
   if (strcmp(tokens[0], "cd") == 0){
     if (tokens[1] == NULL || strcmp(tokens[1], "~") == 0){
@@ -127,7 +176,6 @@ void run_cmd(char ** tokens){
       printf("Errno: %d %s\n", errno, strerror(errno));
       errno = 0;
     }
-    //printf("%s\n", getcwd(tokens[1], 100));
   }
   else if (strcmp(tokens[0], "")){
     if (fork() == 0){
